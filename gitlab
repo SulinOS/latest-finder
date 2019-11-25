@@ -1,0 +1,5 @@
+#!/bin/bash
+user=$1
+name=$2
+version=$(curl https://gitlab.com/$user/$name/-/tags | grep "tar.gz" | head -n 1 | sed "s/.*href=\"//g" | sed "s/\".*//g")
+echo https://gitlab.com$version
