@@ -2,7 +2,7 @@
 url_find(){
 while read line
 do
-string=$(echo $line | grep "HTTP")
+string=$(echo $line | grep "Download (HTTP): <a class=\"ulink\" href=")
 if [ -n "$string" ]
 then
 read line
