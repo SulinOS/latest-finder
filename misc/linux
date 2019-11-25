@@ -1,0 +1,2 @@
+#!/bin/bash
+curl https://www.kernel.org/ | grep "downloadarrow_small.png" | sed "s/.*href=\"//g" | sed "s/\".*//g"
