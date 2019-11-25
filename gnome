@@ -1,0 +1,5 @@
+#!/bin/bash
+name=$1
+version=$(curl http://ftp.gnome.org/pub/gnome/sources/$name/ | grep indexcolname | grep -v "cache.json" | grep -v "image-x-generic" | tail -n 1 | sed "s/.*href=\"//g" | sed "s/\/\".*//g")
+archive=$(curl http://ftp.gnome.org/pub/gnome/sources/$name/$version/ | grep "package-x-generic"  | tail -n 1 | sed "s/.*href=\"//g" | sed "s/\".*//g")
+echo "http://ftp.gnome.org/pub/gnome/sources/$name/$version/$archive"
