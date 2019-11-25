@@ -1,0 +1,17 @@
+#!/bin/bash
+url_find(){
+while read line
+do
+string=$(echo $line | grep "HTTP")
+if [ -n "$string" ]
+then
+read line
+echo $line | sed "s/\">.*//g" | sed "s/\"//g"
+cat > /dev/null
+exit 0
+fi
+done
+}
+name=$2
+category=$1
+curl http://www.linuxfromscratch.org/blfs/view/svn/$category/$name.html | url_find
