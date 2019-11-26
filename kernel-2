@@ -1,0 +1,11 @@
+#!/bin/bash
+
+link=https://mirrors.edge.kernel.org/pub
+for i in $*
+do
+  link=$link/$i
+done
+version=$(curl $link/ | grep  "href="| grep -v "sign" | grep -v ".asc" | tail -n 1 | sed "s/.*href=\"//g" | sed "s/\".*//g")
+version2=$(curl $link/$version | grep ".tar" |  grep  "href=" | grep -v "sign" | grep -v ".asc" | tail -n 1 | sed "s/.*href=\"//g" | sed "s/\".*//g")
+
+echo $link/$version2
