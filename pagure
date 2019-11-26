@@ -1,0 +1,4 @@
+#!/bin/bash
+name=$1
+version=$(curl https://releases.pagure.org/$name/?C=M\;O=A | grep "$name-" | tail -n 1 | sed "s/.*href=\"//g" | sed "s/\".*//g")
+echo https://releases.pagure.org/$name/$version
