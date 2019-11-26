@@ -1,0 +1,4 @@
+#!/bin/bash
+name=$1
+version=$(curl http://download.savannah.gnu.org/releases/$name/ | grep -v ".sig" | grep "href=" | tail -n 1 | sed "s/.*href=\"//g" | sed "s/\".*//g")
+echo http://download.savannah.gnu.org/releases/$name/$version
