@@ -1,0 +1,3 @@
+#!/bin/bash
+name=$1
+curl https://metacpan.org/pod/$name | grep downloadUrl | sed "s/.*href=\"//g" | sed "s/\".*//g"
