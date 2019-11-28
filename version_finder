@@ -12,7 +12,7 @@ echo
 prepare(){
 while read line
 do
-echo "$line" | xargs basename  | vgpep | sed "s/\.\.//g"
+echo "$line" | xargs basename  | vgpep | sed "s/\.\.//g" | sed "s/\.$//"
 done
 }
 if [ "$1" != "" ]
