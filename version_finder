@@ -1,2 +1,13 @@
 #!/bin/bash
-cat | xargs basename | sed "s/.*-//" | sed "s/.*_//" | sed "s/.tar.*//" | sed "s/.orig.*//" | sed "s/.zip.*//"
+vgpep(){
+while read -n 1 c
+do
+if [ "$c" == "1" ] || [ "$c" == "2" ] || [ "$c" == "3" ] || [ "$c" == "4" ] || [ "$c" == "5" ] || [ "$c" == "6" ] || [ "$c" == "7" ] || [ "$c" == "8" ] || [ "$c" == "9" ] || [ "$c" == "0" ] || [ "$c" == "." ] || [ "$c" == "2" ]
+then
+echo -n "$c"
+fi
+done
+echo
+}
+cat | xargs basename | sed "s/.tar.*//" | sed "s/.orig.*//" | sed "s/.zip//" | sed "s/.7z//" | vgpep
+
