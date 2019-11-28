@@ -12,7 +12,7 @@ echo
 prepare(){
 while read line
 do
-echo "$line" | xargs basename | sed "s/+git.*//" | sed "s/.tar.*//" | sed "s/.orig.*//" | sed "s/.zip//" | sed "s/.7z//" | vgpep
+echo "$line" | xargs basename  | vgpep | sed "s/\.\.//g"
 done
 }
 if [ "$1" != "" ]
