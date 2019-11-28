@@ -2,16 +2,22 @@
 vgpep(){
 while read -n 1 c
 do
-if [ "$c" == "1" ] || [ "$c" == "2" ] || [ "$c" == "3" ] || [ "$c" == "4" ] || [ "$c" == "5" ] || [ "$c" == "6" ] || [ "$c" == "7" ] || [ "$c" == "8" ] || [ "$c" == "9" ] || [ "$c" == "0" ] || [ "$c" == "." ] || [ "$c" == "2" ]
-then
-echo -n "$c"
-fi
+  if [ "$c" == "1" ] || [ "$c" == "2" ] || [ "$c" == "3" ] || [ "$c" == "4" ] || [ "$c" == "5" ] || [ "$c" == "6" ] || [ "$c" == "7" ] || [ "$c" == "8" ] || [ "$c" == "9" ] || [ "$c" == "0" ] || [ "$c" == "." ] || [ "$c" == "2" ]
+  then
+    echo -n "$c"
+  fi
 done
 echo
 }
+prepare(){
+while read line
+do
+echo "$line" | xargs basename | sed "s/+git.*//" | sed "s/.tar.*//" | sed "s/.orig.*//" | sed "s/.zip//" | sed "s/.7z//" | vgpep
+done
+}
 if [ "$1" != "" ]
 then
-echo "$1" | xargs basename | sed "s/.tar.*//" | sed "s/.zip//" | sed "s/.7z//" | vgpep
+echo "$1" | prepare
 else
-cat | xargs basename | sed "s/.tar.*//" | sed "s/.zip//" | sed "s/.7z//" | vgpep
+cat | prepare
 fi
