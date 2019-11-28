@@ -1,0 +1,2 @@
+#!/bin/bash
+cat | xargs basename | sed "s/.*-//" | sed "s/.*_//" | sed "s/.tar.*//" | sed "s/.orig.*//" | sed "s/.zip.*//"
